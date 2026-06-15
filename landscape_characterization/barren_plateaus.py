@@ -1,12 +1,13 @@
-import numpy as np
-import matplotlib.pyplot as plt
-from tqdm.auto import tqdm
-from qiskit.quantum_info import Pauli
-from itertools import repeat
 from collections import defaultdict
+from itertools import repeat
+from typing import Any, Callable, Literal, Sequence, TypeVar
+
+import matplotlib.pyplot as plt
+import numpy as np
 from matplotlib.lines import Line2D
-from typing import Sequence, TypeVar, Any, Callable
 from numpy.typing import ArrayLike
+from qiskit.quantum_info import Pauli
+from tqdm.auto import tqdm
 
 T = TypeVar("T")
 
@@ -65,7 +66,7 @@ def extend_with_last(
 def pad_pauli_strings_growth(
     pauli: Pauli,
     target_n: int,
-    growth: str = "linear_half",
+    growth: Literal["identity", "I", "linear_half", "log"] = "linear_half",
     log_base: float = 2,
     round_mode: str = "ceil",
 ) -> Pauli:
@@ -385,7 +386,8 @@ def adaptive_sampling_var(
         from joblib import Parallel, delayed
 
         results = Parallel(n_jobs=n_jobs)(
-            delayed(sample_function)() for _ in tqdm(range(n_to_add), desc="Adding samples", leave=False)
+            delayed(sample_function)()
+            for _ in tqdm(range(n_to_add), desc="Adding samples", leave=False)
         )
 
         L_samples.extend(results)
@@ -1043,7 +1045,7 @@ def barren_plateaus_analysis(
             context=context,
             **cost_kwargs,
         )
-        
+
         def sample_once():
             theta = generate_params(n_qubits, depth)
             return cost_function_expv(theta)

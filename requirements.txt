@@ -1,0 +1,7 @@
+numpy
+matplotlib
+scipy
+scikit-learn
+tqdm
+gudhi
+setuptools_scm
