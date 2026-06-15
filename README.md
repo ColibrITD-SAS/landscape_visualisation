@@ -60,8 +60,6 @@ lv.loss_scan_1d(
 )
 ```
 
-***
-
 ##### Parameters
 
 * **params** (`ParameterVector`)  
@@ -84,8 +82,6 @@ lv.loss_scan_1d(
 * **n\_jobs** (`int`, optional)  
   Number of parallel jobs used during the scan evaluation.  
   Default is `-1` (use all available CPUs).
-
-***
 
 ##### Notes
 
