@@ -1,0 +1,6 @@
+-r requirements.txt
+pytest
+sphinx
+sphinx-rtd-dark-mode
+sphinx-copybutton
+sphinx_github_changelog
