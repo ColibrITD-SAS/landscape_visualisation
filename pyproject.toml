@@ -11,3 +11,9 @@ dynamic = ["dependencies", "readme", "version"]
 [tool.setuptools.dynamic]
 dependencies = { file = ["requirements.txt"] }
 readme = { file = ["README.md"] }
+
+[tool.setuptools.packages.find]
+include = ["landscape_tools*"]
+exclude = ["ex*"]
+
+[tool.setuptools_scm]
