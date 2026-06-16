@@ -447,8 +447,7 @@ class LayerResult(Result):
 def plot_layerwise_qubits(
     results: dict[int, list[Result]],
     N_layers: Sequence[int],
-    get_obs_label: Callable[[Pauli, int], str],
-    make_param_text: Callable[[], str],
+    make_param_text: Callable,
 ) -> None:
     """Plot the variance of loss values as a function of the number of qubits
     for different circuit depths.
@@ -476,7 +475,6 @@ def plot_layerwise_qubits(
     }
 
     plt.figure(figsize=(12, 7))
-    obs_label = None
 
     for lay in N_layers:
         if lay not in results:
@@ -485,9 +483,6 @@ def plot_layerwise_qubits(
         pts = sorted(results[lay], key=lambda d: d["nq"])
         xs = [d["nq"] for d in pts]
         ys = [d["var"] for d in pts]
-
-        if obs_label is None:
-            obs_label = get_obs_label(pts[0]["obs"], 0)
 
         plt.semilogy(
             xs,
@@ -498,9 +493,6 @@ def plot_layerwise_qubits(
             markersize=5,
             label=None,
         )
-
-    if obs_label is None:
-        obs_label = f"P_{0}"
 
     plt.xlabel(r"Number of qubits $n_q$")
     plt.ylabel(r"$\mathrm{Var}_{\theta}(L)$")

@@ -1,22 +1,14 @@
-import pickle
 import re
-from typing import Any, Callable, Dict
-
 import matplotlib.colors as colors
-import matplotlib.patheffects as pe
 import matplotlib.pyplot as plt
 import numpy as np
-import numpy.typing as npt
-from matplotlib.cm import get_cmap
 from matplotlib.colors import LogNorm, Normalize
-from matplotlib.patches import Rectangle
-from matplotlib.ticker import FuncFormatter
 from numpy.typing import NDArray
-from scipy.interpolate import RegularGridInterpolator
 from sklearn.decomposition import PCA
 from tqdm.auto import tqdm
 from typing import TypeAlias
 from joblib import Parallel, delayed
+from typing import Any, Callable, Dict
 
 ArrayLike: TypeAlias = NDArray[np.float64]
 ParameterVector: TypeAlias = NDArray[np.float64]
@@ -492,6 +484,8 @@ def plot_pca_loss_scan_3d(
         ax: Axis on which the plot is drawn.
     """
 
+    from scipy.interpolate import RegularGridInterpolator
+
     if ax is None:
         fig = plt.figure(figsize=(16, 6))
         ax1 = fig.add_subplot(121, projection="3d")
@@ -900,6 +894,8 @@ def plot_pca_analysis(
             - components: Component-level analysis figure
     """
 
+    from matplotlib.ticker import FuncFormatter
+
     def shorten(label, max_len: int | None = None):
         if max_len is None:
             max_len = max_label_length
@@ -1111,6 +1107,10 @@ def plot_pca_circuit_schematic_real_circuit(
     Returns:
         matplotlib.figure.Figure
     """
+
+    from matplotlib.cm import get_cmap
+    from matplotlib.patches import Rectangle
+    import matplotlib.patheffects as pe
 
     # ------------------------------------------------------------------
     # 1) Get flat PCA scores
