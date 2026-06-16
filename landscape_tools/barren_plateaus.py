@@ -80,8 +80,7 @@ def extend_with_last(
     lst: Sequence[T],
     target_len: int,
 ) -> list[T]:
-    """
-    Extend a sequence to a target length by repeating its last element.
+    """Extend a sequence to a target length by repeating its last element.
 
     Args:
         lst: Input sequence to extend. Must not be empty.
@@ -109,11 +108,12 @@ def pad_pauli_strings_growth(
         pauli: Input Pauli string. (for instance ``Pauli("IIYY")``)
         target_n: Desired total number of qubits.
         growth: Padding strategy. Available options are:
+
             - "identity" or "I": Pad with identity operators only.
             - "linear_half": Pad with X, Y or Z operators such that the total
-                number of X/Y/Z operators is approximately ``target_n / 2``.
+              number of X/Y/Z operators is approximately ``target_n / 2``.
             - "log": Pad with X, Y or Z operators such that the total number
-                of X/Y/Z operators is approximately ``log(target_n)``.
+              of X/Y/Z operators is approximately ``log(target_n)``.
         log_base: Base of the logarithm used when ``growth="log"``.
 
     Returns:
@@ -185,7 +185,6 @@ def bootstrap_var_diagnostic_1d(
 
     Returns:
         Dictionary containing diagnostic quantities, including:
-
         - bootstrap estimates of the standard deviation
         - relative error metrics
         - diagnostic flags based on thresholds
@@ -283,7 +282,6 @@ def adaptive_sampling_var(
             If ``None``, no explicit cap is applied apart from ``N_max``.
         abs_err_target: Optional absolute bootstrap error target.
             If provided, the algorithm stops when either:
-
             - ``relative_error <= rel_err_target``, or
             - ``absolute_error <= abs_err_target``.
 
