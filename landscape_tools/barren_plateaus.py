@@ -539,7 +539,7 @@ def plot_layerwise_qubits(
 def plot_layerwise_qubits_padding(
     results: dict[tuple[int, PaddingType], list[Result]],
     N_layers: Sequence[int],
-    padding_types: Sequence[PaddingType],
+    padding_types: Optional[Sequence[PaddingType]],
     padding_latex: dict[str, str],
     get_obs_label: Callable[[Pauli, int], str],
     make_param_text: Callable[[], str],
@@ -576,11 +576,13 @@ def plot_layerwise_qubits_padding(
     }
 
     padding_to_marker = {
-        pad: markers[i % len(markers)] for i, pad in enumerate(padding_types)
+    pad: markers[i % len(markers)]
+    for i, pad in enumerate(padding_types or [])
     }
 
     padding_to_linestyle = {
-        pad: linestyles[i % len(linestyles)] for i, pad in enumerate(padding_types)
+        pad: linestyles[i % len(linestyles)]
+        for i, pad in enumerate(padding_types or [])
     }
 
     plt.figure(figsize=(12, 7))
@@ -589,7 +591,7 @@ def plot_layerwise_qubits_padding(
 
     for lay in N_layers:
 
-        for pad in padding_types:
+        for pad in (padding_types or []):
 
             key = (lay, pad)
             if key not in results:
@@ -643,7 +645,7 @@ def plot_layerwise_qubits_padding(
             lw=2,
             label=padding_latex.get(pad, str(pad)),
         )
-        for pad in padding_types
+        for pad in (padding_types or [])
     ]
 
     plt.legend(
