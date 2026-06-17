@@ -1,9 +1,9 @@
-# Landscape Characterization
+# Landscape Tools
 
 ## Installation
 
 ```bash
-pip install --upgrade git+https://github.com/ColibrITD-SAS/landscape_tools
+pip install landscape_tools
 ```
 
 ```python
@@ -11,22 +11,7 @@ from landscape_tools import landscape_visualization as lv
 from landscape_tools import barren_plateaus as bp
 ```
 
----
-
-update the documentation with
-
-```sh
-sphinx-build -b html docs build
-```
-
-but of course, in order to do that, you need the lastest dev dependancies,
-install them with
-
-```sh
-pip install -r dependencies-dev.txt
-```
-
-# Landscape Tools
+# Landscape Characterization
 
 This module provides utilities to analyze and visualize the optimization
 landscape of variational quantum algorithms (VQAs).
