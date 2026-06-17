@@ -898,7 +898,7 @@ def barren_plateaus_analysis(
     def run_single_point(
         nq: int,
         lay: int,
-        obs_list_builder: Callable[[int], Pauli],
+        obs_list_builder: Optional[Callable[[int], Pauli]],
         extra_print: Optional[str] = None,
     ) -> LayerResult:
         print("--------------------")
@@ -913,9 +913,10 @@ def barren_plateaus_analysis(
 
         circuit = generate_circuits(n_qubits, depth, experiment.ansatz_name)
 
-        observable = obs_list_builder(nq)
+        observable = (obs_list_builder(nq) if obs_list_builder is not None else None)
 
-        print(f"Pauli string: {observable}")
+        if observable is not None:
+            print(f"Pauli string: {observable}")
 
         context: CostFunctionContext = {
             "n_qubits": n_qubits,
