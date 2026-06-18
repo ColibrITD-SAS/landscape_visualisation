@@ -5,3 +5,4 @@ scikit-learn
 tqdm
 gudhi
 setuptools_scm
+qiskit
