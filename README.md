@@ -39,7 +39,7 @@ pip install landscape_tools
 from landscape_tools import landscape_visualization, barren_plateaus
 ```
 
-## Landscape Characterization
+<!-- ## Landscape Characterization
 
 This module provides utilities to analyze and visualize the optimization
 landscape of variational quantum algorithms (VQAs).
@@ -76,4 +76,4 @@ wrapped_loss = lambda p: cost_function(
     circuit=my_circuit,
     hamiltonian=my_hamiltonian,
 )
-```
+``` -->
