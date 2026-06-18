@@ -6,11 +6,17 @@ build-backend = "setuptools.build_meta"
 name = "landscape-tools"
 description = "Internal tools for landscape characterization"
 requires-python = ">=3.9"
-dynamic = ["dependencies", "readme", "version"]
+dynamic = ["dependencies", "version"]
+readme = "README.md"
+
+[project.urls]
+Homepage = "https://github.com/ColibrITD-SAS/landscape_tools"
+Documentation = "https://landscape-tools.colibri-quantum.com"
+Issues = "https://github.com/ColibrITD-SAS/landscape_tools/issues"
 
 [tool.setuptools.dynamic]
 dependencies = { file = ["requirements.txt"] }
-readme = { file = ["README.md"] }
 
 [tool.setuptools.packages.find]
 include = ["landscape_tools*"]
+exclude = ["**"]
